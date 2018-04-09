@@ -1,0 +1,37 @@
+
+
+entity Project {
+	id Integer
+    projectName String
+    projectCode String
+    projectDescription String
+    dateStart LocalDate
+    dateEnd LocalDate
+}
+
+entity Task {
+	id Integer
+    taskName String
+    taskCode String
+    startDate LocalDate
+    endDate LocalDate
+    durationEstimated Float
+    remainingToDo Float
+    percentAvancement Float
+}
+
+relationship OneToMany {
+	Project{tasks} to Task
+}
+
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate Project, Tasks with infinite-scroll
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+angularSuffix * with entities
